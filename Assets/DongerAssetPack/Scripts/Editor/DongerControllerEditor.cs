@@ -8,15 +8,12 @@ namespace DongerAssetPack.MovementEngine{
 	public class DongerControllerEditor : Editor {
 
 		DongerController _controller;
-
 		SerializedProperty m_Crouch;
-		SerializedProperty m_Jump;
 
 		void OnEnable(){
 			_controller = (DongerController)target;
 
 			m_Crouch = serializedObject.FindProperty("m_Crouch");
-			m_Jump = serializedObject.FindProperty("m_Jump");
 		}
 
 		public override void OnInspectorGUI()
@@ -29,14 +26,6 @@ namespace DongerAssetPack.MovementEngine{
 
 			EditorGUILayout.EndHorizontal();
 
-			EditorGUILayout.BeginHorizontal();
-
-			GUILayout.Label(new GUIContent("Jump"), GUILayout.Width(column1Width));
-			GUILayout.Label(m_Jump.boolValue.ToString());
-
-			EditorGUILayout.EndHorizontal();
-
-			//DrawDefaultInspector();
 		}
 	}
 

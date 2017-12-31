@@ -64,6 +64,7 @@
      <Compile Include="Assets\DongerAssetPack\CrossPlatformInput\TouchPad.cs" />
      <Compile Include="Assets\DongerAssetPack\CrossPlatformInput\VirtualInput.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\Abilities\Ability.cs" />
+     <Compile Include="Assets\DongerAssetPack\Scripts\Abilities\CrouchAbility.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\Abilities\JumpAbility.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\AICharacterControl.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\DongerController.cs" />

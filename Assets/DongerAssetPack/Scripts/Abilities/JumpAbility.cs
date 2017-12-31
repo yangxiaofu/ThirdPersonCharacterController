@@ -5,14 +5,10 @@ using UnityEngine;
 namespace DongerAssetPack.MovementEngine{
 	public class JumpAbility : Ability {
 
-		bool _jump;
-
-		public override void HandleAbility()
-		{
-			if (!_jump)
-            {
-                _jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
+		public override AbilityArgs HandleAbility(AbilityArgs args)
+		{	
+            args.Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+			return args;
 		}
 	}
 }

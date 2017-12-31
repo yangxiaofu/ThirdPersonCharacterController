@@ -12,8 +12,8 @@ namespace DongerAssetPack.MovementEngine
         private Vector3 m_Move;
         [SerializeField] private bool m_Jump = false;                      // the world-relative desired move direction, calculated from the camForward and user input.
         [SerializeField] private bool m_Crouch = false;
-
         Ability[] _abilities;
+        AbilityArgs _args = new AbilityArgs();
         
         private void Start()
         {
@@ -40,17 +40,11 @@ namespace DongerAssetPack.MovementEngine
 
         private void Update()
         {
+            //Handle all abilities attached to this gameobject.
             for(int i = 0; i < _abilities.Length; i++)
             {
-                _abilities[i].HandleAbility();
+                _args = _abilities[i].HandleAbility(_args);
             }
-
-            if (!m_Jump)
-            {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
-
-            m_Crouch = CrossPlatformInputManager.GetButton("Crouch");
         }
 
         // Fixed update is called in sync with physics
@@ -76,13 +70,10 @@ namespace DongerAssetPack.MovementEngine
 			// walk speed multiplier
 	        if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
 #endif
-            var abilityArgs = new AbilityArgs();
-            abilityArgs.Move = m_Move;
-            abilityArgs.Crouch = m_Crouch;
-            abilityArgs.Jump = m_Jump;
-            // pass all parameters to the character control script
-            m_Character.Move(abilityArgs);
-            m_Jump = false;
+            _args.Move = m_Move;
+
+            m_Character.Move(_args);
+            _args.Jump = false;
         }
     }
 }
