@@ -347,52 +347,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4333715418429534, guid: 52c092a997c1b4a2b94201d17eafb3d8, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.53267515
+      value: 0.5326752
       objectReference: {fileID: 0}
     - target: {fileID: 4333715418429534, guid: 52c092a997c1b4a2b94201d17eafb3d8, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.07034045
+      value: 0.070340455
       objectReference: {fileID: 0}
     - target: {fileID: 4333715418429534, guid: 52c092a997c1b4a2b94201d17eafb3d8, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.83613265
+      value: 0.83613276
       objectReference: {fileID: 0}
     - target: {fileID: 4333715418429534, guid: 52c092a997c1b4a2b94201d17eafb3d8, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.11041513
-      objectReference: {fileID: 0}
-    - target: {fileID: 114928891215768024, guid: 52c092a997c1b4a2b94201d17eafb3d8,
-        type: 2}
-      propertyPath: m_Jump
-      value: 0
+      value: -0.110415146
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52c092a997c1b4a2b94201d17eafb3d8, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1782114502 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1196609122423960, guid: 52c092a997c1b4a2b94201d17eafb3d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1688896404}
---- !u!114 &1782114509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1782114502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fec6c395fc27841c3b2021359184bebc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1782114510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1782114502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5310f8506944432b19c841926cb4a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

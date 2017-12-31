@@ -28,8 +28,11 @@ namespace DongerAssetPack.MovementEngine
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+		ThirdPersonCharacterLogic _logic;
+
 		protected virtual void Start()
 		{
+			_logic = new ThirdPersonCharacterLogic();
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
@@ -43,7 +46,6 @@ namespace DongerAssetPack.MovementEngine
 		///<summary>Handles the character move abilities</summary>
 		public virtual void Move(AbilityArgs args)
 		{
-
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
 			// direction.
@@ -72,7 +74,6 @@ namespace DongerAssetPack.MovementEngine
 
 			//If the character is crouching make the capsule collidr smaller. 
 			ScaleCapsuleForCrouching(args.Crouch);
-
 
 			PreventStandingInLowHeadroom();
 
@@ -157,7 +158,7 @@ namespace DongerAssetPack.MovementEngine
 		}
 
 		///<summary>Applies a gravitational force to the player if it's in the air.  Also updates the ground distance.</summary>
-		void HandleAirborneMovement()
+		protected virtual void HandleAirborneMovement()
 		{
 			// apply extra gravity from multiplier:
 			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
@@ -168,11 +169,11 @@ namespace DongerAssetPack.MovementEngine
 		}
 
 		///<summary>Will jump if it's not crouched and is grounded.  Jump must be true for it to jump, otherwise, it will not do anything.</summary>
-		void HandleGroundedMovement(AbilityArgs args)
+		protected virtual void HandleGroundedMovement(AbilityArgs args)
 		{
-			if (args.Jump && !args.Crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+			//Wrote Unit Tests as other abilities willb e impacted here. 
+			if (_logic.CanJump(args.Jump, args.Crouch, m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded")))
 			{
-				// jump!
 				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, args.JumpPower, m_Rigidbody.velocity.z);
 				m_IsGrounded = false;
 				m_Animator.applyRootMotion = false;
@@ -188,7 +189,7 @@ namespace DongerAssetPack.MovementEngine
 		}
 
 
-		public void OnAnimatorMove()
+		public void OnAnimatorMove() //Callback method.
 		{
 			// we implement this function to override the default root motion.
 			// this allows us to modify the positional speed before it's applied.

@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\DongerAssetPack\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\Editor\DongerControllerEditor.cs" />
+     <Compile Include="Assets\DongerAssetPack\Scripts\Editor\ThirdPersonCharacterUnitTests.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

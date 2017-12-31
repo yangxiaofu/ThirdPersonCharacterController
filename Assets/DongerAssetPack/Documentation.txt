@@ -2,5 +2,11 @@ Notes:
 1.) Movement with controller.
     (done) Transition Cross Platform input to DongerAssetPack
     (done) Walk in a direction relative to the angle of the camera, but this is not in the right position.
+
+    Character Looks in the direction of mouse Pointer.
+
+
     Advanced Attack Animations
         Aim in direction of mouse or secondary trigger, but walk in the direction of primary trigger.
+
+    Movement Controller

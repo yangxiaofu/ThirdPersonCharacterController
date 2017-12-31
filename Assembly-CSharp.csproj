@@ -73,6 +73,7 @@
      <Compile Include="Assets\DongerAssetPack\Scripts\FirstPersonCharacter\MouseLook.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\FirstPersonCharacter\RigidbodyFirstPersonController.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\ThirdPersonCharacter.cs" />
+     <Compile Include="Assets\DongerAssetPack\Scripts\ThirdPersonCharacterLogic.cs" />
      <Compile Include="Assets\DongerAssetPack\Utility\CurveControlledBob.cs" />
      <Compile Include="Assets\DongerAssetPack\Utility\ForcedReset.cs" />
      <Compile Include="Assets\DongerAssetPack\Utility\FOVKick.cs" />
