@@ -67,12 +67,13 @@
      <Compile Include="Assets\DongerAssetPack\Scripts\Abilities\CrouchAbility.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\Abilities\JumpAbility.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\AICharacterControl.cs" />
+     <Compile Include="Assets\DongerAssetPack\Scripts\CharacterHandleWeapon.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\DongerController.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\FirstPersonCharacter\FirstPersonController.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\FirstPersonCharacter\HeadBob.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\FirstPersonCharacter\MouseLook.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\FirstPersonCharacter\RigidbodyFirstPersonController.cs" />
-     <Compile Include="Assets\DongerAssetPack\Scripts\ThirdPersonCharacter.cs" />
+     <Compile Include="Assets\DongerAssetPack\Scripts\MovementController.cs" />
      <Compile Include="Assets\DongerAssetPack\Scripts\ThirdPersonCharacterLogic.cs" />
      <Compile Include="Assets\DongerAssetPack\Utility\CurveControlledBob.cs" />
      <Compile Include="Assets\DongerAssetPack\Utility\ForcedReset.cs" />

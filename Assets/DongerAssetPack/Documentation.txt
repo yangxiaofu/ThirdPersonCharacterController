@@ -3,8 +3,8 @@ Notes:
     (done) CameraRaycaster on the camera
     (done) Transition Cross Platform input to DongerAssetPack
     (done) Walk in a direction relative to the angle of the camera, but this is not in the right position.
-
-    Character Looks in the direction of mouse Pointer.
+    (done) Character Looks in the direction of mouse Pointer.
 
     Advanced Attack Animations
+        Point Gun in direction of the enemy targets.
         Aim in direction of mouse or secondary trigger, but walk in the direction of primary trigger.

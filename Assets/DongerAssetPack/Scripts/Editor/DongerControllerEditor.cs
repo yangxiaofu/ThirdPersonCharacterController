@@ -19,6 +19,7 @@ namespace DongerAssetPack.MovementEngine{
 		public override void OnInspectorGUI()
 		{
 			EditorGUILayout.HelpBox(_controller.HelpBox(), MessageType.Info);
+			DrawDefaultInspector();
 		}
 	}
 

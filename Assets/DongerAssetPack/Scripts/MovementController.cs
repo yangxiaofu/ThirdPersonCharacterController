@@ -6,7 +6,7 @@ namespace DongerAssetPack.MovementEngine
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
 	[RequireComponent(typeof(Animator))]
-	public class ThirdPersonCharacter : MonoBehaviour
+	public class MovementController : MonoBehaviour
 	{
 		[Header("Movement Parameters")]
 		[SerializeField] float m_MovingTurnSpeed = 360;
@@ -20,7 +20,7 @@ namespace DongerAssetPack.MovementEngine
 	#region AnimatorIK
 
 		[Header("Animator IK")]
-		
+
 		[Tooltip("If true, then the character will look in the direction of the mouse pointer, otherwise, it will look straight ahead.")]
 		[SerializeField] bool _moveHeadInDirectionOfMouse = false;
 		[SerializeField] float _lookAtWeight = 1f;
@@ -41,7 +41,6 @@ namespace DongerAssetPack.MovementEngine
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
-
 		ThirdPersonCharacterLogic _logic;
 		CameraRaycaster _cameraRaycaster;
 
@@ -81,7 +80,9 @@ namespace DongerAssetPack.MovementEngine
 			//Handle the head movement.
 			if(_moveHeadInDirectionOfMouse)
 			{
-				m_Animator.SetLookAtPosition(_cameraRaycasterHitPoint);
+				//Update look direction so that it's looking at the eye level of the player.
+				var lookDirection = new Vector3(_cameraRaycasterHitPoint.x, 1f, _cameraRaycasterHitPoint.z);
+				m_Animator.SetLookAtPosition(lookDirection);
 				m_Animator.SetLookAtWeight(_lookAtWeight);
 			}
 		}

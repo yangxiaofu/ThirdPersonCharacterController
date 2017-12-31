@@ -3,19 +3,22 @@ using UnityEngine;
 
 namespace DongerAssetPack.MovementEngine
 {
-    [RequireComponent(typeof (ThirdPersonCharacter))]
+    [RequireComponent(typeof (MovementController))]
     public class DongerController : MonoBehaviour
     {
-        private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
+        [SerializeField] AnimatorOverrideController _animatorOverrideController;
+
+        private MovementController m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         Ability[] _abilities;
         AbilityArgs _args = new AbilityArgs();
-
+        
         private void Start()
         {
-
+            GetComponent<Animator>().runtimeAnimatorController = _animatorOverrideController;
+            
             //Get all of the abilities attached to the gameObject
             _abilities = GetComponents<Ability>();
 
@@ -32,7 +35,7 @@ namespace DongerAssetPack.MovementEngine
             }
 
             // get the third person character ( this should never be null due to require component )
-            m_Character = GetComponent<ThirdPersonCharacter>();
+            m_Character = GetComponent<MovementController>();
         }
 
         public string HelpBox(){
