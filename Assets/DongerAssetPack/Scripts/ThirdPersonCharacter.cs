@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace DongerAssetPack.MovementEngine
@@ -7,6 +8,7 @@ namespace DongerAssetPack.MovementEngine
 	[RequireComponent(typeof(Animator))]
 	public class ThirdPersonCharacter : MonoBehaviour
 	{
+		[Header("Movement Parameters")]
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
 		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
@@ -14,6 +16,18 @@ namespace DongerAssetPack.MovementEngine
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
+
+	#region AnimatorIK
+
+		[Header("Animator IK")]
+		
+		[Tooltip("If true, then the character will look in the direction of the mouse pointer, otherwise, it will look straight ahead.")]
+		[SerializeField] bool _moveHeadInDirectionOfMouse = false;
+		[SerializeField] float _lookAtWeight = 1f;
+		private Vector3 _cameraRaycasterHitPoint;
+
+	#endregion
+		
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
@@ -29,9 +43,21 @@ namespace DongerAssetPack.MovementEngine
 		bool m_Crouching;
 
 		ThirdPersonCharacterLogic _logic;
+		CameraRaycaster _cameraRaycaster;
 
 		protected virtual void Start()
 		{
+			//If animator IK is on, then find the Camera Rayscaster in the game scene. 
+			if (_moveHeadInDirectionOfMouse)
+			{
+				_cameraRaycaster = FindObjectOfType<CameraRaycaster>();
+				//TODO: Consider automatically adding CameraRaycaster to the main camera.
+				if (!_cameraRaycaster) Debug.LogError("You need to add the CameraRaycaster Component to the MainCamera");
+
+				//Register to cameraRaycaster notifier.
+				_cameraRaycaster.OnLayerHit += OnLayerHit;
+			}
+
 			_logic = new ThirdPersonCharacterLogic();
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
@@ -42,9 +68,26 @@ namespace DongerAssetPack.MovementEngine
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		}
+		
+		//Callback from the Cameraraycaster
+        void OnLayerHit(RaycastHit hit) 
+        {
+            _cameraRaycasterHitPoint = hit.point;
+        }
 
-		///<summary>Handles the character move abilities</summary>
-		public virtual void Move(AbilityArgs args)
+	
+		void OnAnimatorIK(int layerIndex)
+		{
+			//Handle the head movement.
+			if(_moveHeadInDirectionOfMouse)
+			{
+				m_Animator.SetLookAtPosition(_cameraRaycasterHitPoint);
+				m_Animator.SetLookAtWeight(_lookAtWeight);
+			}
+		}
+
+        ///<summary>Handles the character move abilities</summary>
+        public virtual void Move(AbilityArgs args)
 		{
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
