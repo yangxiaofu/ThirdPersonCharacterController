@@ -12,14 +12,8 @@ namespace DongerAssetPack.MovementEngine{
 	{
 		public Vector3 Move = Vector3.zero;
 		public bool Jump = false;
+		public float JumpPower = 0f;
 		public bool Crouch = false;
-
-		public void Reset(){
-			Move = Vector3.zero;
-			Jump = false;
-			Crouch = false;
-		}
-
 	}
 }
 

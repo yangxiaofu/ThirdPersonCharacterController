@@ -10,22 +10,15 @@ namespace DongerAssetPack.MovementEngine{
 		DongerController _controller;
 		SerializedProperty m_Crouch;
 
-		void OnEnable(){
+		void OnEnable()
+		{
 			_controller = (DongerController)target;
-
 			m_Crouch = serializedObject.FindProperty("m_Crouch");
 		}
 
 		public override void OnInspectorGUI()
 		{
-			float column1Width = 200f;
-			EditorGUILayout.BeginHorizontal();
-
-			GUILayout.Label(new GUIContent("Crouch"), GUILayout.Width(column1Width));
-			GUILayout.Label(m_Crouch.boolValue.ToString());
-
-			EditorGUILayout.EndHorizontal();
-
+			EditorGUILayout.HelpBox(_controller.HelpBox(), MessageType.Info);
 		}
 	}
 

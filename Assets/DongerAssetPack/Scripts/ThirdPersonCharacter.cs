@@ -9,7 +9,6 @@ namespace DongerAssetPack.MovementEngine
 	{
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
-		[SerializeField] float m_JumpPower = 12f;
 		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
@@ -63,7 +62,7 @@ namespace DongerAssetPack.MovementEngine
 			//If the character is on the ground.
 			if (m_IsGrounded)
 			{
-				HandleGroundedMovement(args.Crouch, args.Jump);
+				HandleGroundedMovement(args);
 			}
 			//otherwise, if it's in the air.
 			else
@@ -120,7 +119,6 @@ namespace DongerAssetPack.MovementEngine
 			}
 		}
 
-
 		void UpdateAnimator(Vector3 move)
 		{
 			// update the animator parameters
@@ -170,12 +168,12 @@ namespace DongerAssetPack.MovementEngine
 		}
 
 		///<summary>Will jump if it's not crouched and is grounded.  Jump must be true for it to jump, otherwise, it will not do anything.</summary>
-		void HandleGroundedMovement(bool crouch, bool jump)
+		void HandleGroundedMovement(AbilityArgs args)
 		{
-			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+			if (args.Jump && !args.Crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
 			{
 				// jump!
-				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
+				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, args.JumpPower, m_Rigidbody.velocity.z);
 				m_IsGrounded = false;
 				m_Animator.applyRootMotion = false;
 				m_GroundCheckDistance = 0.1f;
