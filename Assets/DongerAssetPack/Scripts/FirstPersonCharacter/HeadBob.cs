@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
     public class HeadBob : MonoBehaviour
     {

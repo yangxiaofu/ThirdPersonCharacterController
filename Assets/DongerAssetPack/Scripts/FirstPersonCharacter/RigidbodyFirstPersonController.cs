@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
     [RequireComponent(typeof (Rigidbody))]
     [RequireComponent(typeof (CapsuleCollider))]

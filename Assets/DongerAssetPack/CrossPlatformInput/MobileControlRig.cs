@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
     [ExecuteInEditMode]
     public class MobileControlRig : MonoBehaviour

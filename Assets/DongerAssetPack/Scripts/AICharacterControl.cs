@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
     [RequireComponent(typeof (UnityEngine.AI.NavMeshAgent))]
     [RequireComponent(typeof (MovementController))]

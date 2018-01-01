@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NUnit.Framework;
 
-namespace DongerAssetPack.MovementEngine.UnitTests{
+namespace DongerAssetPack.IceEngine.UnitTests{
 	[TestFixture]
 	public class ThirdPersonCharacterUnitTests {
 

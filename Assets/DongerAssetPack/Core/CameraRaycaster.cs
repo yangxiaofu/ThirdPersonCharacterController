@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
 	//Attach to the camera.
 	public class CameraRaycaster : MonoBehaviour {

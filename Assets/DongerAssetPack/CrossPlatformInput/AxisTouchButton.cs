@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
 	public class AxisTouchButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	{

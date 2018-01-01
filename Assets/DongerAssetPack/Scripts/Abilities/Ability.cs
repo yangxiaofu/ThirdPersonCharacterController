@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DongerAssetPack.MovementEngine{
+namespace DongerAssetPack.IceEngine{
 	public abstract class Ability : MonoBehaviour {
 		///<summary>This will handle abilities that are attached to the gameobject</summary>
 		public abstract AbilityArgs HandleAbility(AbilityArgs args);

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
@@ -36,6 +36,8 @@ namespace DongerAssetPack.MovementEngine
 		const float k_Half = 0.5f;
 		float m_TurnAmount;
 		float m_ForwardAmount;
+
+		///<summary>The normal Vector of the ground that's hit from the Raycast</summary>
 		Vector3 m_GroundNormal;
 		float m_CapsuleHeight;
 		Vector3 m_CapsuleCenter;
@@ -93,8 +95,8 @@ namespace DongerAssetPack.MovementEngine
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
 			// direction.
-			if (args.Move.magnitude > 1f) args.Move.Normalize();
-			args.Move = transform.InverseTransformDirection(args.Move);
+			if (args.Move.magnitude > 1f) args.Move.Normalize(); //Normalizes the movement.
+			args.Move = transform.InverseTransformDirection(args.Move); //Transforms global to local space.
 
 			//Is the character grounded?  Will impact the abilities.
 			CheckGroundStatus();
@@ -164,6 +166,7 @@ namespace DongerAssetPack.MovementEngine
 			}
 		}
 
+		///<summary>Responsible for updating the animator animations</summary>
 		void UpdateAnimator(Vector3 move)
 		{
 			// update the animator parameters
@@ -171,6 +174,7 @@ namespace DongerAssetPack.MovementEngine
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetBool("Crouch", m_Crouching);
 			m_Animator.SetBool("OnGround", m_IsGrounded);
+			
 			if (!m_IsGrounded)
 			{
 				m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);

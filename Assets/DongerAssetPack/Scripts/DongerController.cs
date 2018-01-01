@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
     [RequireComponent(typeof (MovementController))]
     public class DongerController : MonoBehaviour
@@ -17,9 +17,10 @@ namespace DongerAssetPack.MovementEngine
         
         private void Start()
         {
+            // Set up the animator override controller.
             GetComponent<Animator>().runtimeAnimatorController = _animatorOverrideController;
             
-            //Get all of the abilities attached to the gameObject
+            // Get all of the abilities attached to the gameObject.
             _abilities = GetComponents<Ability>();
 
             // get the transform of the main camera
@@ -38,7 +39,8 @@ namespace DongerAssetPack.MovementEngine
             m_Character = GetComponent<MovementController>();
         }
 
-        public string HelpBox(){
+        public string HelpBox()
+        {
             return "The Donger Controller is the core of the MovementEngine. The DongerController handles the abilities and move Parameters and passes it to the Third Person Character Controller.  If you want to have movement abilities added to this, you can add these abilities as a component to this gameObject.";
         }
 

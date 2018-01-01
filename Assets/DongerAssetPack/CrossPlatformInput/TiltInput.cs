@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
     // helps with managing tilt input on mobile devices
     public class TiltInput : MonoBehaviour
@@ -98,7 +98,7 @@ namespace DongerAssetPack.MovementEngine
 }
 
 
-namespace DongerAssetPack.MovementEngine
+namespace DongerAssetPack.IceEngine
 {
 #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof (TiltInput.AxisMapping))]

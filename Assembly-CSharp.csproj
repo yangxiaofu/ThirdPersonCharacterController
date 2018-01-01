@@ -80,7 +80,11 @@
      <Compile Include="Assets\DongerAssetPack\Utility\FOVKick.cs" />
      <Compile Include="Assets\DongerAssetPack\Utility\LerpControlledBob.cs" />
      <Compile Include="Assets\DongerAssetPack\Utility\SimpleMouseRotator.cs" />
+     <Compile Include="Assets\DongerAssetPack\Weapons\LeftHandGrip.cs" />
+     <Compile Include="Assets\DongerAssetPack\Weapons\RightHandGrip.cs" />
+     <None Include="Assets\FreeMachineGun\Shader\BDCS.shader" />
      <None Include="Assets\DongerAssetPack\Documentation.txt" />
+     <None Include="Assets\FreeMachineGun\documentation.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

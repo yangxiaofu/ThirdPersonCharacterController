@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace DongerAssetPack.MovementEngine{
+namespace DongerAssetPack.IceEngine{
 	[CustomEditor(typeof(DongerController))]
 	public class DongerControllerEditor : Editor {
 

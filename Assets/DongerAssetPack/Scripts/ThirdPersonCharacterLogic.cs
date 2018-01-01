@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DongerAssetPack.MovementEngine{
+namespace DongerAssetPack.IceEngine{
 	public class ThirdPersonCharacterLogic {
 
 		public bool CanJump(bool jump, bool isCrouching, bool isGrounded) 
