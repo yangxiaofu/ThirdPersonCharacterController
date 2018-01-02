@@ -202,7 +202,7 @@ BlendTree:
   m_MaxThreshold: 0.95238096
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
-  m_BlendType: 3
+  m_BlendType: 2
 --- !u!206 &20600002
 BlendTree:
   m_ObjectHideFlags: 1

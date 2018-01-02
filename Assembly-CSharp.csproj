@@ -83,6 +83,7 @@
      <Compile Include="Assets\DongerAssetPack\Weapons\LeftHandGrip.cs" />
      <Compile Include="Assets\DongerAssetPack\Weapons\RightHandGrip.cs" />
      <None Include="Assets\FreeMachineGun\Shader\BDCS.shader" />
+     <None Include="Assets\WalkAnimsetBasic\readme.txt" />
      <None Include="Assets\DongerAssetPack\Documentation.txt" />
      <None Include="Assets\FreeMachineGun\documentation.txt" />
  <Reference Include="UnityEngine.UI">
