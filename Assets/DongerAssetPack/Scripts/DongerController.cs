@@ -7,7 +7,6 @@ namespace DongerAssetPack.IceEngine
     public class DongerController : MonoBehaviour
     {
         [SerializeField] AnimatorOverrideController _animatorOverrideController;
-
         private MovementController m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera

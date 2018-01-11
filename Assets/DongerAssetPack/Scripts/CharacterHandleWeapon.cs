@@ -7,14 +7,13 @@ namespace DongerAssetPack.IceEngine{
 
 	//This will be added if the character has a weapon
 	[RequireComponent(typeof(Animator))]
-	public class CharacterHandleWeapon : MonoBehaviour {
+	public class CharacterHandleWeapon : Ability{
 
 		[Tooltip("This is the transfrom that the character will rotate around when aiming their weapon.")]
 		protected Animator _anim;
 		protected CameraRaycaster _raycaster;
 		private const int WEAPONUP_LAYER_INDEX = 1;
 
-		
 		[Tooltip("Used to determine if the left hand will grab the weapon.")]
 		[SerializeField] bool _useLeftHandGrip = false;
 		[Range(0, 1)]
@@ -25,12 +24,14 @@ namespace DongerAssetPack.IceEngine{
 		[SerializeField] float _rightHandWeight = 1f;
 		Vector3 _lookAtDirection;
 
-
 		[Header("Debugging Purposes")]
 		[SerializeField] bool _targetIsGameObject = true;
 
+
 		[Tooltip("Used for debugging purposes for now.  ")]
 		[SerializeField] GameObject _target;
+		///<summary>The target the player is trying to shoot</summary>
+		public GameObject Target{get{return _target;}}
 		[SerializeField] Transform _weaponSocket;
 
 		protected virtual void Start()
@@ -47,6 +48,11 @@ namespace DongerAssetPack.IceEngine{
             _lookAtDirection = hit.point;
         }
 
-	}
+        public override AbilityArgs HandleAbility(AbilityArgs args)
+        {
+            args.Shooting = CrossPlatformInputManager.GetButton("Shoot");
+			return args;
+        }
+    }
 }
 

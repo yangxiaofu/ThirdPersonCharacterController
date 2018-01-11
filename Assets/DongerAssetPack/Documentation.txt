@@ -6,5 +6,6 @@ Notes:
     (done) Character Looks in the direction of mouse Pointer.
 
     Advanced Attack Animations
+        (done) Strafing blend tree put into place.
         Point Gun in direction of the enemy targets.
         Aim in direction of mouse or secondary trigger, but walk in the direction of primary trigger.

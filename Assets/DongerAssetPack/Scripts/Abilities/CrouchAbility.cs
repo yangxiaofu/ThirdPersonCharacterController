@@ -9,7 +9,7 @@ namespace DongerAssetPack.IceEngine{
         [HideInInspector] public bool Crouch = false;
         public override AbilityArgs HandleAbility(AbilityArgs args)
         {
-            args.Crouch = Crouch = CrossPlatformInputManager.GetButton("Crouch");
+            args.Crouch = CrossPlatformInputManager.GetButton("Crouch");
             return args;
         }
     }

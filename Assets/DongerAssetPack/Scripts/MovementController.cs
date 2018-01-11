@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using DongerAssetPack.Utility;
 
 namespace DongerAssetPack.IceEngine
 {
@@ -28,14 +29,15 @@ namespace DongerAssetPack.IceEngine
 
 	#endregion
 		
-
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		bool m_IsGrounded;
+		bool m_IsShooting;
 		float m_OrigGroundCheckDistance;
 		const float k_Half = 0.5f;
 		float m_TurnAmount;
 		float m_ForwardAmount;
+		float m_StrafeAmount;
 
 		///<summary>The normal Vector of the ground that's hit from the Raycast</summary>
 		Vector3 m_GroundNormal;
@@ -75,7 +77,6 @@ namespace DongerAssetPack.IceEngine
         {
             _cameraRaycasterHitPoint = hit.point;
         }
-
 	
 		void OnAnimatorIK(int layerIndex)
 		{
@@ -104,6 +105,32 @@ namespace DongerAssetPack.IceEngine
 			args.Move = Vector3.ProjectOnPlane(args.Move, m_GroundNormal);
 			m_TurnAmount = Mathf.Atan2(args.Move.x, args.Move.z);
 			m_ForwardAmount = args.Move.z;
+			m_IsShooting = args.Shooting; //Sets if the player is shooting.
+
+			//If it's in shooting mode, get the target. 
+			if (m_IsShooting == true)
+			{
+				//Determine the strafe amount for the rotation.
+				var target = GetComponent<CharacterHandleWeapon>().Target;
+
+				
+				if (Mathf.Abs(args.Move.magnitude) > 0.3)
+				{
+					var angle = Vector3.SignedAngle(this.transform.forward, args.Move, Vector3.up);
+					m_StrafeAmount = Tools.ScaleAngleToOne(angle);
+				} 
+				
+				else {
+					m_StrafeAmount = 0;
+				}
+				
+				m_TurnAmount = 0;
+			}
+			//Otherwise, there will be no strafing allowed.  It'll continue to walk normally.
+			else {	
+				m_StrafeAmount = 0;
+			}
+			
 
 			ApplyExtraTurnRotation();
 
@@ -125,6 +152,11 @@ namespace DongerAssetPack.IceEngine
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(args.Move);
+		}
+
+		void OnGUI()
+		{
+			GUILayout.Label("Strafe Amount " + m_StrafeAmount);
 		}
 
 
@@ -174,6 +206,8 @@ namespace DongerAssetPack.IceEngine
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetBool("Crouch", m_Crouching);
 			m_Animator.SetBool("OnGround", m_IsGrounded);
+			m_Animator.SetBool("Shooting", m_IsShooting);
+			m_Animator.SetFloat("Strafe", m_StrafeAmount, 0.1f, Time.deltaTime);
 			
 			if (!m_IsGrounded)
 			{

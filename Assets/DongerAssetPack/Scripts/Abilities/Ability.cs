@@ -14,6 +14,7 @@ namespace DongerAssetPack.IceEngine{
 		public bool Jump = false;
 		public float JumpPower = 0f;
 		public bool Crouch = false;
+		public bool Shooting = false;
 	}
 }
 
